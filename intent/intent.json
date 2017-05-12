@@ -1,0 +1,98 @@
+{
+  "intents": [
+    {
+      "name": "AddToList",
+      "samples": [
+        "Add {grocery}  to my list",
+        "Add {quantity} units of {grocery} to my list",
+        "Add {grocery} ",
+        "Add {grocery} to my shopping list"
+      ],
+      "slots": [
+        {
+          "name": "grocery",
+          "type": "AMAZON.Food",
+          "samples": [
+            "Add {grocery} ",
+            "Add {grocery} to the list"
+          ]
+        },
+        {
+          "name": "quantity",
+          "type": "AMAZON.NUMBER",
+          "samples": []
+        }
+      ]
+    },
+    {
+      "name": "AMAZON.CancelIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.HelpIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.StopIntent",
+      "samples": []
+    },
+    {
+      "name": "GetList",
+      "samples": [
+        "What's on my list",
+        "What's on my shopping list",
+        "What do you have",
+        "What do I need to buy",
+        "What groceries do I need to get"
+      ],
+      "slots": []
+    }
+  ],
+  "prompts": [
+    {
+      "id": "Elicit.Intent-AddToList.IntentSlot-grocery",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "What would you like me to add to your list?"
+        }
+      ]
+    }
+  ],
+  "dialog": {
+    "version": "1.0",
+    "intents": [
+      {
+        "name": "AddToList",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "grocery",
+            "type": "AMAZON.Food",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicit": "Elicit.Intent-AddToList.IntentSlot-grocery"
+            }
+          },
+          {
+            "name": "quantity",
+            "type": "AMAZON.NUMBER",
+            "elicitationRequired": false,
+            "confirmationRequired": false,
+            "prompts": {}
+          }
+        ]
+      },
+      {
+        "name": "GetList",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      }
+    ]
+  }
+}
