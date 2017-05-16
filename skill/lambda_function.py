@@ -1,11 +1,11 @@
 from mijnahlib import Server as AH
-username = "yourAHusername"
-password = "yourAHpassword"
+from settings import username, password, applicationID
+
 ah = AH(username, password)
 
 def lambda_handler(event, context):
     if (event["session"]["application"]["applicationId"] !=
-            "amzn1.ask.skill.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"):
+            applicationID):
         raise ValueError("Invalid Application ID")
     
     if event["session"]["new"]:
@@ -79,7 +79,7 @@ def add_to_list(intent):
             success = ah.shopping_cart.add_item_by_id(product_id)
 
         if success == True:
-            speech_output = product_id + " was added to your shopping list."
+            speech_output = item + " was added to your shopping list."
             reprompt_text = ""  
 
     return build_response(session_attributes, build_speechlet_response(
@@ -159,3 +159,4 @@ def build_response(session_attributes, speechlet_response):
         "sessionAttributes": session_attributes,
         "response": speechlet_response
     }
+
