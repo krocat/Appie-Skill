@@ -80,6 +80,7 @@ To run the skill you need to do three things:-
 The contents of the zip file should be as follows:
 
     ```
+    
         beautifulsoup4-4.6.0.dist-info ( the folder and its contents )
         bs4 ( the folder and its contents )
         bs4-0.0.1-py2.7.egg-info ( the folder and its contents )
@@ -89,7 +90,7 @@ The contents of the zip file should be as follows:
         requests-2.13.0.dist-info ( the folder and its contents )
         settings.py
         lambda_function.py
-
+    
     ``` 
 Then update the lambda source zip file with this change and upload to lambda again, this step makes sure the lambda function only serves request from authorized source.
 
@@ -109,7 +110,8 @@ Sometimes AWS doesn't like the zip. Try uploading it again.
 If it is successful then you should see this output:-
 
     ```
-     {
+    
+    {
      "version": "1.0",
      "response": {
        "outputSpeech": {
@@ -130,7 +132,8 @@ If it is successful then you should see this output:-
        "shouldEndSession": true
      },
      "sessionAttributes": {}
-}
+    }
+    
     ```
 This means that the basics of the skill are functioning.
 
